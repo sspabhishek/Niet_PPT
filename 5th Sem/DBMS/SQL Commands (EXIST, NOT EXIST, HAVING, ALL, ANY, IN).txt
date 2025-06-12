@@ -1,0 +1,29 @@
+select roll_no, name, semester from student where not exists (select * from department where student.roll_no=department.roll_no)
+
+select roll_no, name, semester from student where exists (select * from department where student.roll_no=department.roll_no)
+
+SELECT * FROM student
+WHERE name IN ('LMN', 'AB', 'XYZ')
+
+select * from department
+
+SELECT *
+FROM student
+WHERE roll_no = ANY
+  (SELECT roll_no
+  FROM department
+  WHERE subject = 'DBMS')
+
+SELECT *
+FROM student
+WHERE roll_no = ALL
+  (SELECT roll_no
+  FROM department
+  WHERE subject = 'DBMS')
+
+SELECT COUNT(roll_no) as total
+FROM department group by subject 
+HAVING subject = 'DBMS'
+
+
+select * from student
